@@ -60,13 +60,35 @@ public class UserService {
 		User foundUser = userToBeEdited.get();	
 		
 		if(userToBeEdited.isPresent()) {
-		    
-			      foundUser.setUserName(newUser.getUserName());
-				    foundUser.setAvatarUrl(newUser.getAvatarUrl());
-				    foundUser.setEmail(newUser.getEmail());
-				    foundUser.setMessage(newUser.getMessage());
-				    userRepository.save(foundUser);
-				    return foundUser;
+			if(newUser.getUserName() != null) {
+				   foundUser.setUserName(newUser.getUserName());
+				
+			}else {
+				foundUser.setUserName(foundUser.getUserName());
+			} if(newUser.getEmail() != null){
+			    foundUser.setEmail(newUser.getEmail());
+			  
+			}else {
+				foundUser.setEmail(foundUser.getEmail());
+			} if(newUser.getAvatarUrl() != null){
+				   foundUser.setAvatarUrl(newUser.getAvatarUrl());
+				 
+			}else {
+				foundUser.setAvatarUrl(foundUser.getAvatarUrl());
+			}if(newUser.getMessage() != null){
+			    foundUser.setMessage(newUser.getMessage());
+			
+			}
+			else {
+				foundUser.setMessage(foundUser.getMessage());
+			}
+		    userRepository.save(foundUser);
+		    return foundUser;
+			  
+				
+			
+				
+				  
 		
 		  
 		}else {
