@@ -43,6 +43,10 @@ public class CommentController {
 	public Comment getOneComment(@PathVariable Long commentId) {
 		return commentService.getOneCommentById(commentId);
 	}
+	@GetMapping("/commentcount/{userId}")
+	public long getcommentcount(@PathVariable Optional<Long> userId) {
+		return commentService.getcommentcount(userId);
+	}
 	
 	
 }

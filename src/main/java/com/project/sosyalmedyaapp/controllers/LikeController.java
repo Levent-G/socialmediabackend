@@ -36,11 +36,16 @@ public class LikeController {
 	public Like getOneLike(@PathVariable Long likeId) {
 		return likeService.getOneLikeById(likeId);
 	}
+	
 	@PostMapping
 	public Like createOneLike(@RequestBody LikeCreateRequest request) {
 		return likeService.createOneLike(request);
 	}
 
+	@GetMapping("/likecount/{userId}")
+	public long getpostcount(@PathVariable Optional<Long> userId) {
+		return likeService.getlikecount(userId);
+	}
 	
 	
 }

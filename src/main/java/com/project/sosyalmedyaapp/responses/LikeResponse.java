@@ -10,6 +10,7 @@ public class LikeResponse {
 	Long id;
 	Long userId;
 	Long postId;
+	String status;
 	
 	public LikeResponse(Like entity ) {
 		

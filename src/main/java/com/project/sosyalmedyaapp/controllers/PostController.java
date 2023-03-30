@@ -49,6 +49,10 @@ public class PostController {
 	public void deleteOnePost(@PathVariable Long postId) {
 		 postService.deleteOnePostById(postId);
 	}
+	@GetMapping("/postcount/{userId}")
+	public long getpostcount(@PathVariable Optional<Long> userId) {
+		return postService.getpostcount(userId);
+	}
  
 
 }

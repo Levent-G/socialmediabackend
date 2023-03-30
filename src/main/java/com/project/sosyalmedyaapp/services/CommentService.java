@@ -84,6 +84,13 @@ public class CommentService {
 		commentRepository.deleteById(commentId);
 		
 	}
+	public long getcommentcount(Optional<Long> userId) {
+		List<Comment> list;
+		list = commentRepository.findByUserId(userId.get());
+		long count =0;
+		count = list.size();
+		 return count;
+	}
 	
 	
 }

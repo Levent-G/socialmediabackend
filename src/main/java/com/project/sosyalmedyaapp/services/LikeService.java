@@ -69,6 +69,15 @@ public class LikeService {
 			return null;
 		}
 	}
+	public long getlikecount(Optional<Long> userId) {
+		List<Like> list;
+		list = likeRepository.findByUserId(userId.get());
+		long count =0;
+		count = list.size();
+		 return count;
+	}
+
+
 
 	
 	

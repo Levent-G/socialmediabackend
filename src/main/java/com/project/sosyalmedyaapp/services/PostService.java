@@ -75,5 +75,13 @@ public class PostService {
 		list = postRepository.findByUserId(userId.get());
 		return list.stream().map(p->new PostResponse(p)).collect(Collectors.toList());
 	}
+
+	public long getpostcount(Optional<Long> userId) {
+		List<Post> list;
+		list = postRepository.findByUserId(userId.get());
+		long count =0;
+		count = list.size();
+		 return count;
+	}
 	
 }

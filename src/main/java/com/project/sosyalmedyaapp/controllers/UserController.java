@@ -1,5 +1,6 @@
  package com.project.sosyalmedyaapp.controllers;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 
@@ -35,7 +36,7 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public User createUser(@RequestBody User newUser) {
+	public User createUser(@RequestBody User newUser)throws NoSuchAlgorithmException {
 		return userService.saveOneUser(newUser);
 	}
 	@GetMapping("/{userId}")
@@ -44,8 +45,19 @@ public class UserController {
 		return userService.getOneUserById(userId);
 	}
 	
+	@GetMapping("/search/{userName}")
+	public User getOneUsername(@PathVariable String userName) {
+		
+		return userService.getOneUserByUserName(userName);
+	}
+	@GetMapping("/token/{accessToken}")
+	public User getOneUserToken(@PathVariable String accessToken) {
+		
+		return userService.getOneUserByToken(accessToken);
+	}
+	
 	@PutMapping("/{userId}")
-	public User updateOneUser(@PathVariable Long userId,@RequestBody User newUser) {
+	public User updateOneUser(@PathVariable Long userId,@RequestBody User newUser)throws NoSuchAlgorithmException {
 return userService.updateOneUser(userId,newUser);
 	
 	}
@@ -57,14 +69,16 @@ return userService.updateOneUser(userId,newUser);
 	}
 	
 	@PostMapping("/login")
-	public User loginUser(@RequestBody User loginUser) {
+	public User loginUser(@RequestBody User loginUser)throws NoSuchAlgorithmException {
 		return userService.loginUserService(loginUser);
 	}
 	
 	@PutMapping("/logout/{userId}")
-	public User updateStatus(@PathVariable Long userId,@RequestBody User newUser) {
-         return userService.updateStatus(userId,newUser);
+	public User updateStatus(@PathVariable Long userId) {
+         return userService.updateStatus(userId);
 	}
+	
+
 	//USERS END->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
 	
 	//USER AUTHORIZATION START->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<
